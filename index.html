@@ -1,0 +1,129 @@
+<!doctype html>
+<html lang="en">
+	<head>
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+
+		<title>reveal.js</title>
+
+		<link rel="stylesheet" href="dist/reset.css">
+		<link rel="stylesheet" href="dist/reveal.css">
+		<link rel="stylesheet" href="dist/theme/black.css">
+
+		<!-- Theme used for syntax highlighted code -->
+		<link rel="stylesheet" href="plugin/highlight/monokai.css">
+	</head>
+	<body>
+		<div class="reveal">
+			<div class="slides">
+			  <section>
+				<img src="./assets/redux.webp" alt="redux" width="300px" height="300px"/>
+			  </section>
+			  <section>
+				<p>What is this and how it works?</p>
+			  </section>
+			  <section>
+				<img src="./assets/redux-library.png" alt="redux-library">
+			  </section>
+			  <section>
+				<p>Without Redux</p>
+				<img src="./assets/without-redux.png" alt="without-redux">
+			  </section>
+			  <section>
+				<p>With Redux</p>
+				<img src="./assets/with-redux.png" alt="with-redux">
+			  </section>
+			  <section>
+				<p>Redux Flow</p>
+				<img src="./assets/Redux-flow.png" alt="redux-flow">
+			  </section>
+			  <section>
+				<p>Action</p>
+				<pre>
+				  <code data-trim data-noescape>
+					const increment = {
+					  type: 'INCREMENT'
+					};
+					const decrement = {
+					  type: 'DECREMENT'
+					};
+				  </code>
+				</pre>
+			  </section>
+			  <section>
+				<p>Reducer</p>
+				<pre>
+				  <code data-trim data-noescape>
+					function counter(state = 0, action) {
+					  switch (action.type) {
+						case 'INCREMENT':
+						  return state + 1;
+						case 'DECREMENT':
+						  return state - 1;
+						default:
+						  return state;
+					  }
+					}
+				  </code>
+				</pre>
+			  </section>
+			  <section>
+				<p>Store</p>
+				<pre>
+				  <code data-trim data-noescape>
+					import { createStore } from 'redux';
+	  
+					let store = createStore(counter);
+				  </code>
+				</pre>
+			  </section>
+			  <section>
+				<p>Dispatch</p>
+				<pre>
+				  <code data-trim data-noescape>
+					const btn = document.getElementById('increment');
+					btn.addEventListener('click', () => {
+					  store.dispatch(increment());
+					});
+				  </code>
+				</pre>
+			  </section>
+			  <section>
+				<p>Getting State</p>
+				<pre>
+				  <code data-trim data-noescape>
+					console.log(store.getState()); // 1
+				  </code>
+				</pre>
+			  </section>
+			  <section>
+				<p>Subscribing to State Changes</p>
+				<pre>
+				  <code data-trim data-noescape>
+					store.subscribe(() => console.log(store.getState()));
+				  </code>
+				</pre>
+			  </section>
+			  <section>
+				<p>Finish</p>
+			  </section>
+			</div>
+		  </div>
+
+		<script src="dist/reveal.js"></script>
+		<script src="plugin/notes/notes.js"></script>
+		<script src="plugin/markdown/markdown.js"></script>
+		<script src="plugin/highlight/highlight.js"></script>
+		<script>
+			// More info about initialization & config:
+			// - https://revealjs.com/initialization/
+			// - https://revealjs.com/config/
+			Reveal.initialize({
+				hash: true,
+
+				// Learn about plugins: https://revealjs.com/plugins/
+				plugins: [ RevealMarkdown, RevealHighlight, RevealNotes ]
+			});
+		</script>
+	</body>
+</html>
